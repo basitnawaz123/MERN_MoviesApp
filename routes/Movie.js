@@ -29,11 +29,11 @@ var upload = multer({ storage: storage });
 
 router.get("/csv", generateCsv);
 router.get("/", getMovies);
-router.post("/", upload.single("poster"), requireAuth, addMovie);
-router.get("/:id", requireAuth, single);
+router.post("/", upload.single("poster"), addMovie);
+router.get("/:id", single);
 router.get("/:genre", getMovieByGenre);
-router.get("/:calculate", requireAuth, calculateBusinessByActor);
-router.put("/:id", upload.single("poster"), requireAuth, updateMovie);
-router.delete("/:id", requireAuth, deleteMovie);
+router.get("/:calculate", calculateBusinessByActor);
+router.put("/:id", upload.single("poster"), updateMovie);
+router.delete("/:id", deleteMovie);
 
 module.exports = router;

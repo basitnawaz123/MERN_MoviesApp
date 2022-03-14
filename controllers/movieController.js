@@ -75,15 +75,12 @@ const addMovie = async (req, res) => {
 // Fetching Single Movie Record
 const single = async (req, res) => {
   const _id = req.params.id;
-  const result = await MoviesModel.findById({ _id }).populate({
+  const result = await MoviesModel.findById({ _id }).lean().populate({
     path: "actors._id",
     select: "name age gender",
   });
-  if (result.length > 0) {
-    res.render("single_movie", { result });
-  } else {
-    res.send("Record not found!");
-  }
+
+  res.render("single_movie", { result });
 };
 
 // Fetching single movie by Genre
@@ -139,22 +136,6 @@ const calculateBusinessByActor = async (req, res) => {
 
 const updateMovie = async (req, res) => {
   _id = req.params.id;
-  var matches = req.body.poster.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
-    response = {};
-  if (matches.length !== 3) {
-    return new Error("Invalid input string");
-  }
-
-  response.type = matches[1];
-  response.data = new Buffer.from(matches[2], "base64");
-  let decodedImg = response;
-  let imageBuffer = decodedImg.data;
-  let type = decodedImg.type;
-  let ext = mime.getExtension(type);
-  let fileName = `poster_${Date.now()}.${ext}`;
-
-  fs.writeFileSync("./uploads/movie_posters/" + fileName, imageBuffer, "utf8");
-
   const { reviews } = req.body;
 
   try {
@@ -163,10 +144,6 @@ const updateMovie = async (req, res) => {
       {
         $push: {
           reviews,
-        },
-
-        $set: {
-          poster: fileName,
         },
       }
     );

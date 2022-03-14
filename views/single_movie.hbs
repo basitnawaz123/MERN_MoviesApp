@@ -1,0 +1,35 @@
+<section class="pt-5">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-6">
+        <img src="{{result.poster}}" alt="{{name}}" class="img-fluid w-100" />
+
+      </div>
+      <div class="col-md-6">
+        <h2>{{result.name}}</h2>
+        <h4>Genre:
+          <span style="text-transform: capitalize;">{{result.genre}}</span></h4>
+        <h5>Actors:</h5>
+
+        {{#each result.actors}}
+          <a href="/actors/{{this._id._id}}">
+            <span class="badge bg-primary">{{this._id.name}}</span></a>
+        {{/each}}
+
+      </div>
+    </div>
+
+    <div class="row pt-5">
+      <div class="col">
+        <h3>Reviews</h3>
+        {{#each result.reviews}}
+        <p>
+            {{this.rating}} Stars<br>
+           <strong> {{this.comment}}</strong></p>
+        
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</section>
