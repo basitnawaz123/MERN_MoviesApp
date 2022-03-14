@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const multer = require("multer");
-const { requiresAuth } = require("express-openid-connect");
+const { requireAuth } = require("../middleware/checkAuth");
 const {
   addActor,
   listActors,
@@ -15,9 +15,9 @@ const upload = multer({
 });
 
 router.get("/import", importActors);
-router.get("/", listActors);
+router.get("/", requireAuth, listActors);
 router.post("/", upload.single("picture"), addActor);
-router.get("/:id", getSpecificActor);
+router.get("/:id", requireAuth, getSpecificActor);
 router.put("/:id", updateActor);
 
 module.exports = router;

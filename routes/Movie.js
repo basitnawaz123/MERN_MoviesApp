@@ -28,9 +28,9 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 router.get("/csv", generateCsv);
-router.get("/", getMovies);
+router.get("/", requireAuth, getMovies);
 router.post("/", upload.single("poster"), addMovie);
-router.get("/:id", single);
+router.get("/:id", requireAuth, single);
 router.get("/:genre", getMovieByGenre);
 router.get("/:calculate", calculateBusinessByActor);
 router.put("/:id", upload.single("poster"), updateMovie);

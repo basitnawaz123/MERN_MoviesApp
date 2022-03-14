@@ -73,6 +73,8 @@ const addActor = async (req, res) => {
       console.log(err);
     });
 
+    uploadImage.on("");
+
     uploadImage.on("finish", async () => {
       const filePath = image.metadata.mediaLink;
 
