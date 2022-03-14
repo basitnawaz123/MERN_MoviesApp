@@ -136,7 +136,7 @@ const calculateBusinessByActor = async (req, res) => {
 
 const updateMovie = async (req, res) => {
   _id = req.params.id;
-  const { reviews } = req.body;
+  const { reviews, actors } = req.body;
 
   try {
     await MoviesModel.findOneAndUpdate(
@@ -144,6 +144,7 @@ const updateMovie = async (req, res) => {
       {
         $push: {
           reviews,
+          actors,
         },
       }
     );
