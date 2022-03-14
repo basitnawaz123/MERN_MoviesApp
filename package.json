@@ -1,0 +1,42 @@
+{
+  "name": "nova_task_0",
+  "version": "1.0.0",
+  "description": "Nova Internship task 2",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itsbasit/nova_task_2.git"
+  },
+  "author": "Basit Nawaz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/itsbasit/nova_task_2.git/issues"
+  },
+  "homepage": "https://github.com/itsbasit/nova_task_2.git#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.2",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-handlebars": "^6.0.3",
+    "express-handlebars-paginate": "^1.0.3",
+    "express-openid-connect": "^2.7.1",
+    "firebase-admin": "^10.0.2",
+    "handlebars-paginate": "^0.1.0",
+    "json2csv": "^5.0.7",
+    "jsonwebtoken": "^8.5.1",
+    "mime": "^3.0.0",
+    "mongoose": "^6.2.3",
+    "multer": "^1.4.4",
+    "nodemailer": "^6.7.2",
+    "nodemon": "^2.0.15",
+    "path": "^0.12.7",
+    "request": "^2.88.2",
+    "uuid-v4": "^0.1.0"
+  }
+}

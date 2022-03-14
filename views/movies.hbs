@@ -1,0 +1,37 @@
+<div class="container pt-5">
+  <div class="row">
+    {{#each data}}
+      <div class="col-md-3 mb-3">
+        <div class="card">
+          <img src="{{this.poster}}" class="card-img-top" />
+          <div class="card-body">
+            <h5 class="card-title">{{this.name}}</h5>
+            <p class="card-text">Genre: {{this.genre}}</p>
+            <p class="card-text">Business Done: {{this.businessDone}}</p>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <center>
+        <ul id="pagination" class="pagination">
+
+        </ul>
+      </center>
+    </div>
+  </div>
+</div>
+
+<script>
+  const value =
+  {{numberOfPages}}
+  for(page=1; page<= value; page++) { var ul =
+  document.getElementById("pagination"); var li = document.createElement("li");
+  li.setAttribute("class", "page-item"); const anchor =
+  document.createElement('a'); anchor.href = `/movies?page=${page}`;
+  anchor.setAttribute("class", "page-link"); anchor.innerText = page;
+  li.appendChild(anchor); ul.appendChild(li); }
+</script>
