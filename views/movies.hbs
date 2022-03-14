@@ -7,8 +7,7 @@
           <div class="card-body">
             <h5 class="card-title">{{this.name}}</h5>
             <p class="card-text">Genre: {{this.genre}}</p>
-            <p class="card-text">Business Done: {{this.businessDone}}</p>
-            <p class="card-text">Actors: {{data.actors._id}}</p>
+            <p class="card-text">Business Done: <span class="badge bg-primary">{{this.businessDone}}</span></p>
             <a href="/movies/{{this._id}}" class="btn btn-primary w-100">View Detail</a>
           </div>
         </div>
