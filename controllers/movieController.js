@@ -24,6 +24,7 @@ const getMovies = async (req, res) => {
         data: result,
         numberOfPages,
         base_url: process.env.Base_url,
+        loggedIn: req.oidc.isAuthenticated() ? 1 : 0,
       });
     } else {
       res.send("No record found!");
@@ -80,7 +81,10 @@ const single = async (req, res) => {
     select: "name age gender",
   });
 
-  res.render("single_movie", { result });
+  res.render("single_movie", {
+    result,
+    loggedIn: req.oidc.isAuthenticated() ? 1 : 0,
+  });
 };
 
 // Fetching single movie by Genre

@@ -106,6 +106,7 @@ const listActors = async (req, res) => {
       data: result,
       numberOfPages,
       base_url: process.env.Base_url,
+      loggedIn: req.oidc.isAuthenticated() ? 1 : 0,
     });
   } else {
     res.send("No record found!");
@@ -120,6 +121,7 @@ const getSpecificActor = async (req, res) => {
     age: result.age,
     gender: result.gender,
     picture: result.picture,
+    loggedIn: req.oidc.isAuthenticated() ? 1 : 0,
   });
 };
 
